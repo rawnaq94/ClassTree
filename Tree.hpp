@@ -6,15 +6,16 @@ using namespace std;
 
 class node
 {
-   	private:
+   private:
       	int num;
 	      node *leftChild;
 	      node *rightChild;
 	      node *parent;
 
-	public:
+   public:
 	node(int i);
-  node();
+        node();
+	~node();
 	node *getLeftChild();
 	void setLeftChild(node *i);
 	node *getRightChild();
@@ -32,6 +33,7 @@ private:
         
  public:
     Tree();
+    ~Tree();
     
     void insert(int i);
     void remove(int i);
