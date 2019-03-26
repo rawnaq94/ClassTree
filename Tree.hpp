@@ -56,6 +56,6 @@ class NodeT
     
      private:
         int value;
-        NodeT* root;
+        NodeT* rootOfTree;
     };
 }
