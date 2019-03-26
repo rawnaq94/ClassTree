@@ -43,7 +43,7 @@ class NodeT
         
     public:
         Tree();
-        ~Tree();
+    
         Tree insert(int i);
         Tree remove(int i);
         int size();
