@@ -18,7 +18,6 @@ public:
     }
 };
 
-namespace ariel{
     
     class Tree{
         
