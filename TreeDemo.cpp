@@ -6,7 +6,8 @@
  */
 
 #include <iostream>
-using std::cout, std::endl;
+//using std::cout, std::endl;
+using namespace std;
 
 #include "Tree.hpp"
 
