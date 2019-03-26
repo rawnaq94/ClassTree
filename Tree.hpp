@@ -3,14 +3,7 @@ namespace ariel{
 
     class Tree{
         
-       private:
-        
-        int len;
-        Node* Troot;
-        Node* Delete(Node *root, int data);
-        Node* FindMin(Node* root);
-        void inOrder(Node* t);
-        Node* getNode(int i);
+    
         
         public:
         Tree();
