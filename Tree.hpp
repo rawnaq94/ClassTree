@@ -17,8 +17,6 @@ public:
 
 
 namespace ariel{
-#include "Node.hpp"
-
     class Tree{
         
         private:
