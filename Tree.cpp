@@ -13,7 +13,7 @@ Tree Tree::insert(int i){
     return *this;
 }
 
-Tree Tree::remove(int i){
+Tree Tree::remove(int j){
     
     return *this;
 }
@@ -22,7 +22,7 @@ int Tree::size(){
     
     return 0;
 }
-bool Tree::contains(int i){
+bool Tree::contains(int k){
     
     return false;
 }
@@ -34,11 +34,11 @@ int Tree::parent(int i){
     
     return 0;
 }
-int Tree::left(int i){
+int Tree::left(int j){
     
     return 0;
 }
-int Tree::right(int i){
+int Tree::right(int k){
     
     return 0;
 }
