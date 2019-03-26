@@ -1,3 +1,9 @@
+/**
+ * A collection of signatures without realizations.
+ * By rawnaq 
+ */
+
+
 #include <iostream>
 using namespace std;
 
