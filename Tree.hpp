@@ -78,10 +78,7 @@ class Tree
   private:
         NodeT *root;
 	int cap;
-	NodeT* byInt(int i);
-        NodeT* max(NodeT *root);
-        void setVer(NodeT *n, NodeT *set, bool right);
-        void destructor(NodeT *root);
+
 };
 }
 
