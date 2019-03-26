@@ -1,84 +1,47 @@
-/**
- * A collection of signatures without realizations.
- * By rawnaq 
- */
+#include <stddef.h> // for NULL
 
-
-#include <iostream>
-using namespace std;
-
-
-class NodeT
+class Node
 {
-   private:
-      	int num;
-	      NodeT* leftChild;
-	      NodeT* rightChild;
-	     
-
-   public:
-	NodeT(int n)
-	{ 
-		num=n; 
-		leftChild=Null;
-		rightChild=Null;
-	} 
-	
-        NodeT();
-	~NodeT();
-	
-	NodeT* getLeftChild() { return leftChild; }
-	void setLeftChild(NodeT* i);
-	{
-		leftChild=i; 
-	}
-	
-	NodeT* getRightChild() { return rightChild; }
-	void setRightChild(NodeT* j)
-	{
-		rightChild=j;
-	}
-	
-        int getNum() { return num; }
-	void setNum(int k) 
-	{
-		num=k;
-	}
-};
-
-namespace ariel {
-
-
-class Tree
-{
+public:
+    int data;
+    Node* right;
+    Node* left;
+    
+    Node(int i){
         
- public:
-        Tree()
-        {
-	     root=Null;
-	     cap=0;
-	}
-	
-        ~Tree() 
-	{
-		  destructor(root);
-	}
-	
-    Tree& insert(int i);
-    void remove(int i);
-    int size();
-    boolean contains(int i);
-    int root();
-    int parent(int i);
-    int left();
-    int right();
-    void print(NodeT *root);
- 
-	
-  private:
-        NodeT *root;
-	int cap;
-
+        data=i;
+        right=NULL;
+        left=NULL;
+    }
 };
-}
 
+
+namespace ariel{
+#include "Node.hpp"
+
+    class Tree{
+        
+        private:
+        
+        int len;
+        Node* Troot;
+        Node* Delete(Node *root, int data);
+        Node* FindMin(Node* root);
+        void inOrder(Node* t);
+        Node* getNode(int i);
+        
+        public:
+        Tree();
+        ~Tree();
+        void destroy(Node* t);
+        Tree& insert(int i);
+        Tree& remove(int i);
+        int size();
+        bool contains(int i);
+        int root();
+        int parent(int i);
+        int left(int i);
+        int right(int i);
+        void print();
+    };
+}
