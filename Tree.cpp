@@ -1,50 +1,28 @@
+// Part One with partial implementation ---- for running only //
+
 #include "Tree.hpp"
 
 namespace ariel{
     
 
-Tree::Tree(){
-    
-    
-}
+Tree::Tree() { }
 
-Tree Tree::insert(int i){
-    
-    return *this;
-}
+Tree Tree::insert(int i) { return *this; }
 
-Tree Tree::remove(int j){
-    
-    return *this;
-}
+Tree Tree::remove(int i) { return *this; }
 
-int Tree::size(){
+int Tree::size() { return 0; }
     
-    return 0;
-}
-bool Tree::contains(int k){
+bool Tree::contains(int i) { return false; }
+
+int Tree::root(){ return 0; }
     
-    return false;
-}
-int Tree::root(){
+int Tree::parent(int i){ return 0; }
     
-    return 0;
-}
-int Tree::parent(int i){
+int Tree::left(int i) { return 0; }
     
-    return 0;
-}
-int Tree::left(int j){
+int Tree::right(int i){ return 0; }
     
-    return 0;
-}
-int Tree::right(int k){
+void Tree::print() { }
     
-    return 0;
-}
-void Tree::print(){
-            
-            
-    
-}
 };
