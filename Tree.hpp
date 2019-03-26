@@ -3,19 +3,24 @@ using namespace std;
 
 namespace ariel{
     
-class Node
+class NodeT
 {
-public:
-    int data;
-    Node* right;
-    Node* left;
     
-    Node(int i){
-        
-        data=i;
-        right=NULL;
-        left=NULL;
+  public:
+    
+    NodeT* rightChild;
+    NodeT* leftChild;
+    int num;
+    
+    
+    
+    NodeT(int i)
+    {   
+        num = i;
+        rightChild = NULL;
+        leftChild = NULL;
     }
+    
 };
 
     
