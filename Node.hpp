@@ -1,5 +1,4 @@
 
-#include <stddef.h> // for NULL
 
 class Node
 {
