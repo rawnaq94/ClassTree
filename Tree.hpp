@@ -1,3 +1,19 @@
+
+class Node
+{
+public:
+    int data;
+    Node* right;
+    Node* left;
+    
+    Node(int i){
+        
+        data=i;
+        right=NULL;
+        left=NULL;
+    }
+};
+
 namespace ariel{
     
     class Tree{
