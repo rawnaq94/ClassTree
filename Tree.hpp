@@ -22,14 +22,14 @@ class NodeT
     }
     
     NodeT* getRightChild() { return rightChild; }
-    void setRightChild(node* n)
+    void setRightChild(NodeT* n)
     {
       rightChild = n;
     }
     
     
     NodeT* getLeftChild() { return leftChild; }
-    void setLeftChild(node* n)
+    void setLeftChild(NodeT* n)
     {
      leftChild = n;
     }
