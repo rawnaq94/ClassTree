@@ -21,16 +21,29 @@ class NodeT
         leftChild = NULL;
     }
     
+    NodeT* getRightChild() { return rightChild; }
+    void setRightChild(node* n)
+    {
+      rightChild = n;
+    }
+    
+    
+    NodeT* getLeftChild() { return leftChild; }
+    void setLeftChild(node* n)
+    {
+     leftChild = n;
+    }
+    
+    int getNum() { return num; }
 };
 
     
     class Tree{
+      
         
-        
-        private:
-        
-        public:
+    public:
         Tree();
+        ~Tree();
         Tree insert(int i);
         Tree remove(int i);
         int size();
@@ -40,5 +53,9 @@ class NodeT
         int left(int i);
         int right(int i);
         void print();
+    
+     private:
+        int value;
+        NodeT* root;
     };
 }
