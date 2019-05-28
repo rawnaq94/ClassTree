@@ -1,0 +1,105 @@
+import numpy as np
+
+
+class NeuralNetwork:
+    def __init__(self, input_layer, hidden_size, expected, activation='sigmoid'):
+       
+        #input layer is a numpy vector,hidden_size is size of hidden layer ,expected is expected output.
+        #activation is the type of activation function given in string
+        self.input = np.asarray(input_layer)
+        #random betwwen 0 to 1 the weight 
+        self.w1 = np.random.uniform(low=0, high=1, size=(input_layer.shape[0], hidden_size)).astype(dtype='float64')
+        #random betwwen 0 to 1 the weight 
+        self.w2 = np.random.uniform(low=0, high=1, size=(hidden_size, expected.shape[0])).astype(dtype='float64')
+      
+        self.layer1 = np.zeros(hidden_size)
+        
+        self.layer1_activation = np.zeros(hidden_size)
+        
+        self.expected = expected
+       
+        self.output = np.zeros(expected.shape)
+      
+        self.output_activation = np.zeros(expected.shape)
+        # a activation function.
+        self.activation, self.activation_derivative = NeuralNetwork.get_activation(activation)
+        # a loss function list of sum.
+        self.loss_error = 0
+
+    def feedforward(self):
+        
+        # left to right 
+        self.layer1 = np.dot(self.input, self.w1) / self.layer1.shape[0]
+        # update hidden layer after activation function.
+        self.layer1_activation = self.activation(self.layer1)
+        # update output layer.
+        self.output = np.dot(self.layer1_activation, self.w2) / self.output.shape[0]
+        self.output_activation = self.activation(self.output)
+        return self.output
+
+    def back_propagation(self, alpha):
+        #right to left procces
+        #get the NN and learning rate
+        
+        # calculate the error of output layer.
+        output_error = self.expected - self.output
+        delta_output = output_error * self.activation_derivative(self.output_activation)
+       
+        # find error of hidden layer.
+        error_layer1 = np.dot(delta_output, self.w2.T)
+        # find delta of weight 2
+        delta_layer1 = error_layer1 * self.activation_derivative(self.layer1_activation)
+
+        # transpose the delta output vector.
+        delta_output = delta_output[np.newaxis]
+
+        # update w2 weight.
+        self.layer1_activation = self.layer1_activation.reshape((self.layer1_activation.shape[0], 1))
+        self.w2 += np.dot(np.array(self.layer1_activation), delta_output) * alpha
+        # update w1 weight.
+        self.w1 += np.dot(self.input[np.newaxis].T, delta_layer1[np.newaxis]) * alpha
+
+        # store mean sum squared loss.
+        self.loss_error = np.mean(np.square(output_error))
+
+    def change_activation(self, activation):
+        #change activation function.
+       
+        self.activation = NeuralNetwork.get_activation(activation=activation)
+
+    def set_input(self, value):
+        #set input layer.
+        
+        self.input = np.asarray(value, dtype='float64')
+
+    def set_expected(self, value):
+        #set output layer.
+        
+        self.expected = np.asarray(value, dtype='float64')
+
+    def save_weights(self, path):
+        #save weights in text file.
+        
+        np.savetxt(fname="{}/w1.txt".format(path), X=self.w1, fmt="%f")
+        np.savetxt(fname="{}/w2.txt".format(path), X=self.w2, fmt="%f")
+
+    def load_weights(self, path):
+        #load weights from text file.
+        #path to folder location.
+       
+        self.w1 = np.loadtxt(fname="{}/w1.txt".format(path))
+        self.w2 = np.loadtxt(fname="{}/w2.txt".format(path))
+
+    @staticmethod
+    def get_activation(activation):
+        #get activation function.
+       
+        if activation == 'sigmoid':
+            from activation import sigmoid, sigmoid_derivative
+            return sigmoid, sigmoid_derivative
+        elif activation == 'relu':
+            from activation import relu, relu_derivative
+            return relu, relu_derivative
+        elif activation == 'tanh':
+            from activation import tanh, tanh_derivative
+            return tanh, tanh_derivative
